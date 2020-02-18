@@ -13,7 +13,7 @@
             <div class="form-check" *ngFor="let addMarque of addMarques">
 
                 <input class="form-check-input" type="radio" name="marque" value="{{addMarque}}" #marque="ngModel"
-                    required [(ngModel)]="newChaussure.marque" [class.is-invalid]="marque.invalid && marque.touched>
+                    required [(ngModel)]="newChaussure.marque" [class.is-invalid]="marque.invalid && marque.touched">
                 <label class="form-check-label"> {{addMarque}} </label>
                 <small *ngIf="marque.invalid && marque.touched" class="text-danger"> Marque is required </small>
             </div>

@@ -15,6 +15,14 @@
       "type": "Ville",
       "taille": 46,
       "dateEntreStock": "2020-02-18T13:42:35.995Z"
+    },
+    {
+      "id": 10,
+      "nom": "testNom",
+      "marque": "adidas",
+      "type": "Sport",
+      "taille": 38,
+      "dateEntreStock": "2020-02-18T15:45:08.959Z"
     }
   ]
 }

@@ -7,11 +7,11 @@ export class ChaussurePage {
   }
   completeForm() {
     let nom = element.all(by.id('nom'));
-    let marque = element.all(by.css('input[value="nike"]'))[0];
+    let marque = element.all(by.css('.form-check-input'));
     let type = element.all(by.id('type'));
     let taille = element.all(by.id('taille'));
     nom.sendKeys('testNom');
-    marque.click();
+    marque.get(0).click();
     type.sendKeys('Sport');
     taille.sendKeys('38');
   }
