@@ -1,0 +1,54 @@
+<div *ngIf="isLoading; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock>
+    <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-template #elseBlock>
+
+        <div class="d-flex justify-content-around">
+            <h1>Liste des chaussures</h1>
+            <button routerLink="/add" class="btn btn-primary" id="addChaussureLink">Ajouter une paire de
+                Chaussures</button>
+        </div>
+
+        <div class="text-center"> le nombre de chaussures restantes: {{nbRestant}} </div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Marque</th>
+                <th scope="col">Type</th>
+                <th scope="col">Taille</th>
+                <th scope="col">Date</th>
+                <th scope="col">To Edit</th>
+                <th scope="col">To Delete</th>
+                <th scope="col"> Voir detail </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let chaussure of chaussures" class="myTr">
+                <th scope="row" class="align-middle"> {{chaussure.id}} </th>
+                <td class="align-middle"> {{chaussure.nom}} </td>
+                <td class="align-middle"> {{chaussure.marque}} </td>
+                <td class="align-middle"> {{chaussure.type}} </td>
+                <td class="align-middle"> {{chaussure.taille}} </td>
+                <td class="align-middle"> {{chaussure.dateEntreStock | date: short}} </td>
+                <td class="align-middle">
+                    <button [routerLink]="['/edit', chaussure.id]" class="btn btn-outline-success align-middle">
+                        <mat-icon class="align-middle"> edit </mat-icon>
+                    </button>
+                </td>
+                <td class="align-middle">
+                    <button (click)="deleteChaussure(chaussure)"
+                        class="btn btn-outline-danger align-middle deleteChaussure">
+                        <mat-icon class="align-middle"> delete </mat-icon>
+                    </button>
+                </td>
+                <th scope="col"> <button class="btn btn-outline-primary" [routerLink]="['/detail', chaussure.id]"> <mat-icon> more </mat-icon> </button> </th>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>

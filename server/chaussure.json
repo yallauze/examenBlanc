@@ -1,0 +1,20 @@
+{
+  "chaussure": [
+    {
+      "id": 8,
+      "nom": "Yali",
+      "marque": "Adidas",
+      "type": "Sport",
+      "taille": 36,
+      "dateEntreStock": "2020-02-18T13:15:06.571Z"
+    },
+    {
+      "id": 9,
+      "nom": "Titi",
+      "marque": "Puma",
+      "type": "Ville",
+      "taille": 46,
+      "dateEntreStock": "2020-02-18T13:42:35.995Z"
+    }
+  ]
+}

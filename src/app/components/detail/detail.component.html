@@ -1,0 +1,26 @@
+<div *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading">
+    <div *ngIf="chaussureAfficher; then thenBlock; else elseBlock"></div>
+    <ng-template #thenBlock>
+        <div class="d-flex justify-content-center m-5">
+            <div class="card" style="width: 18rem;">
+                <h3>Full detail des chaussures with ID: {{chaussureAfficher.id}}</h3>
+                <div class="card-body">
+                    <h5 class="card-title">Nom: {{ chaussureAfficher.nom }} </h5>
+                    <p class="card-text">Marque: {{ chaussureAfficher.marque }} </p>
+                    <p class="card-text">Type: {{ chaussureAfficher.type }} </p>
+                    <p class="card-text">Taille: {{ chaussureAfficher.taille }} </p>
+                    <p class="card-text">Date d'entrée: {{ chaussureAfficher.dateEntreStock }} </p>
+                </div>
+                <button class="btn btn-primary" routerLink="/dashboard"> Go Back</button>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #elseBlock>
+        <h1 class="text-danger"> This article does not existe, hahaha!!!! </h1>
+    </ng-template>
+</div>

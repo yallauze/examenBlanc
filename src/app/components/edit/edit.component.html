@@ -1,0 +1,46 @@
+<div *ngIf="isLoading; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock>
+    <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-template #elseBlock>
+    <div class="container-fluid">
+        <h5>Form Pour créer une paire de chaussures</h5>
+        <form #editChaussureForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label> Nom </label>
+                <input type="text" name="nom" #nom="ngModel" id="nom" [(ngModel)]="editChaussure.nom" class="form-control"
+                    required [class.is-invalid]="nom.invalid && nom.touched">
+                <small *ngIf="nom.invalid && nom.touched" class="text-danger"> Nom is required </small>
+            </div>
+    
+            <div class="form-group">
+                <label> Choose a marque: </label>
+                <div class="form-check" *ngFor="let editMarque of editMarques">
+                    <input class="form-check-input" type="radio" name="marque" value="{{editMarque}}" #marque="ngModel" required
+                        [(ngModel)]="editChaussure.marque" [class.is-invalid]="marque.invalid && marque.touched">
+                    <label class="form-check-label"> {{editMarque}} </label>
+                    <small *ngIf="marque.invalid && marque.touched" class="text-danger"> Marque is required </small>
+                </div>
+            </div>
+        
+            <div class="form-group">
+                <select class="form-control" name="type" required [(ngModel)]="editChaussure.type" #type="ngModel" id="type"
+                    [class.is-invalid]="type.invalid && type.touched">
+                    <option selected value="" disabled> Choose a type: </option>
+                    <option *ngFor="let editType of editTypes" [value]="editType"> {{ editType }} </option>
+                </select>
+                <small class="text-danger" *ngIf="type.invalid && type.touched">Type is required</small>
+            </div>
+
+            <div class="form-group">
+                <label> Taille </label>
+                <input type="number" name="taille" #taille="ngModel" id="taille" [(ngModel)]="editChaussure.taille" class="form-control"
+                    required [class.is-invalid]="taille.invalid && taille.touched" [max]="maxValue" [min]="minValue" (change)="checkRange(newChaussure.taille)">
+                <small *ngIf="(taille.invalid || horsplage) && taille.touched" class="text-danger"> Taille is required and has to be within {{minValue}} and {{maxValue}} </small>
+            </div>
+    
+            <input type="submit" value="Confirmer" class="btn btn-primary" [disabled]="editChaussureForm.invalid || horsplage" id="submitBtn">
+        </form>
+    </div>
+</ng-template>
