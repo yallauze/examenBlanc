@@ -9,7 +9,7 @@ import { Chaussure } from '../models/chaussure';
   providedIn: 'root'
 })
 export class ChaussureService {
-  public marques: string[] = ['adidas', 'nike', 'puma'];
+  public marques: string[] = ['Adidas', 'Nike', 'Puma'];
   public types: string[] = ['Sport', 'Ville', 'Football'];
  
   public _url: string = "http://localhost:3000/chaussure";
